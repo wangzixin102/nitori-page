@@ -1,0 +1,262 @@
+[
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0001",
+        "product_id": "1010101",
+        "product_name": "大小引き出し収納付きチェストベッドフレーム(ジオ)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0001",
+        "product_id": "1010102",
+        "product_name": "大容量収納付きチェストベッドフレーム(シグナル3)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0001",
+        "product_id": "1010103",
+        "product_name": "シングル棚・コンセント・引出し付収納ベッドフレーム (IKI)",
+        "guarantee": "1年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品)",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0002",
+        "product_id": "1011101",
+        "product_name": "折りたたみすのこベッド(ハングJY W100)",
+        "guarantee": "1年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品)",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0002",
+        "product_id": "1011102",
+        "product_name": "電動折りたたみベッド(セレサ3本体+サイドガード)",
+        "guarantee": "5年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0002",
+        "product_id": "1011103",
+        "product_name": "リクライニングベッド(OLBN2 BR)",
+        "guarantee": "5年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品)",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0003",
+        "product_id": "1012101",
+        "product_name": "アンティーク調木目ベッドフレーム(引出し無)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0003",
+        "product_id": "1012102",
+        "product_name": "ベッドフレーム(メリッサ3 LEG/LOW 床板)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "bed000",
+        "category_id": "bed0003",
+        "product_id": "1012103",
+        "product_name": "ベッドフレーム(レッグ)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0001",
+        "product_id": "1111101",
+        "product_name": "布張りソファ(CA10 DR)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0001",
+        "product_id": "1111102",
+        "product_name": "布張りソファ(NポケットA13) ",
+        "guarantee": "30年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0001",
+        "product_id": "1111103",
+        "product_name": "布張りソファ(キングダム3)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0002",
+        "product_id": "1112101",
+        "product_name": "本革ソファ(ボルトン2)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0002",
+        "product_id": "1112102",
+        "product_name": "1人用本革ソファ",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0002",
+        "product_id": "1112103",
+        "product_name": "電動本革リクライニングソファ(クローナ スタンダードタイプ NB)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0003",
+        "product_id": "1113101",
+        "product_name": "布張りカウチソファ(CA2 DR)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0003",
+        "product_id": "1113102",
+        "product_name": "布張りカウチソファ (ウォール3KD)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "sofa000",
+        "category_id": "sofa0003",
+        "product_id": "1113103",
+        "product_name": "布張りカウチソファ(NポケットA15)",
+        "guarantee": "30年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0001",
+        "product_id": "1211101",
+        "product_name": "デスク(N ステイン 120 )",
+        "guarantee": "1年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0001",
+        "product_id": "1211102",
+        "product_name": "タモ材を使用した丈夫なデスク (LB) ",
+        "guarantee": "1年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "無料",
+        "return": ""
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0001",
+        "product_id": "1211103",
+        "product_name": "デスクセット(トリプロ 119)",
+        "guarantee": "1年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0001",
+        "product_id": "1211104",
+        "product_name": "両袖机(LEED D-33 D70)",
+        "guarantee": "3年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0002",
+        "product_id": "1212101",
+        "product_name": "くみあわせデスク (DL23)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0002",
+        "product_id": "1212102",
+        "product_name": "ユニットデスク(SC23)",
+        "guarantee": "5年",
+        "order_method": "配送員設置又は配送センター受取商品",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0002",
+        "product_id": "1212103",
+        "product_name": "デスク (PLABO N)",
+        "guarantee": "5年",
+        "order_method": "お客様組立家具・玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "有料",
+        "return": "14日間返品可能"
+    },
+    {
+        "root_category_id": "desk000",
+        "category_id": "desk0002",
+        "product_id": "1212104",
+        "product_name": "コンパクトツインデスク ラック付き",
+        "guarantee": "1年",
+        "order_method": "玄関先迄納品（店舗受取可能商品）",
+        "delivery_fee": "無料",
+        "return": ""
+    }
+]

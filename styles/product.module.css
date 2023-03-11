@@ -1,0 +1,157 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upperContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb;
+  margin-right: 20px;
+}
+
+.slidePics {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.infoContainer{
+  display: inline-block;
+  vertical-align: top;
+  width: 440px;
+}
+
+.orderContainer {
+  margin: 0;
+  box-sizing: border-box;
+  min-width: 260px;
+  max-width: 300px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    overflow: hidden;
+    overflow: auto;
+}
+
+.propName {
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 0;
+}
+
+.subTitle {
+ font-size: 30px;
+ margin: 0;
+}
+
+.subId {
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.orderProp {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: solid 1px #dbdbdb;
+  padding: 10px 0;
+}
+
+.orderInfo {
+  display: inline-block;
+  width: 80px;
+  vertical-align: top;
+  text-align: left;
+  font-size: 14px;
+}
+
+.orderDetail {
+  width: 200px;
+  text-align: right;
+  display: inline-block;
+  word-wrap: break-word;
+  word-break: break-all;
+  clear: both;
+  font-weight: bold;
+  font-size: 14px;
+}
+  
+.orderBuyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+  
+.orderPrice {
+  margin: 20px 0;
+  font-size: 28px;
+  font-weight: bolder;
+}
+  
+.orderBtn {
+  margin-top: 10px; 
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border-color: #eb6157;
+  background-color: #eb6157;
+  opacity: 1;
+  color: #f7f7f7;
+  box-shadow: none;
+}
+
+.orderBtn:hover {
+  opacity: 0.6;
+}
+  
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.functionsBtn {
+  margin: 30px 10px 0 10px;
+}
+
+.likeAddBtn {
+  border: none;
+  background: none;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+.likeIcon {
+  border: 2px solid #dbdbdb;
+  margin: 0;
+  padding: 8px;
+  border-radius: 100%;
+  background-color: white;
+  opacity: 1;
+}
+
+.likeText {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.likeAddBtn:hover {
+  cursor: pointer;
+}
+
+.likeAddBtn:hover .likeIcon {
+  opacity: 0.6;
+}
+  
+.likeAddBtn:hover .likeText {
+  text-decoration: underline;
+}
+
+.likeIcon.liked {
+  background-color: #009e96;
+}

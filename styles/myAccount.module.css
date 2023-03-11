@@ -1,0 +1,247 @@
+.content {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.memberTitle {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.titleText {
+    color: white;
+    background-color: #009e96;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1px 12px;
+    margin-right: 5px;
+}
+
+.logOut {
+    color: #009e96;
+    font-size: 14px;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.logOut:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.memberAbout {
+    color: #808080;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.memberAbout::before {
+    content: "※ ";
+    left: 0;
+}
+
+.memberCard {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.memberCardName {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.pointWrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.pointText {
+    margin: 0;
+    padding: 0;
+}
+
+.nowPoint {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eb6157;
+}
+
+.nowPointNum {
+    margin-right: 5px;
+    font-size: 26px;
+}
+
+.point {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;  
+}
+
+.pointNum {
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.pointUpdate {
+    font-size: 12px;
+    color: #808080;
+    margin: 0;
+    padding: 0;
+}
+
+.pointUpdate::before {
+    content: "※ ";
+    left: 0;
+}
+
+.infoWrapper {
+    margin-left: auto;
+    
+}
+
+.infoDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.girdWrapper {
+    text-align: center;
+    border: 2px solid #dbdbdb;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.gridIcon {
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+}
+
+.gridText {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.girdWrapper:hover {
+    cursor: pointer;
+}
+
+.girdWrapper:hover .gridIcon {
+    opacity: 0.6;
+}
+  
+.girdWrapper:hover .gridText {
+    text-decoration: underline;
+}
+
+.reviewTitle {
+    font-size: 24px;
+    margin: 30px 0 0 0;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 20px;
+}
+
+.latestOrder {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 20px 0;
+}
+
+.orderImg {
+    border-radius: 5px;
+}
+
+.reviewWrapper {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.orderSubname {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.noRecords {
+    font-size: 26px;
+    color: #dbdbdb;
+    text-align: center;
+}
+
+.writeReviewBtn {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #009e96;
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.writeReviewBtn:hover {
+    cursor: pointer;
+    border-color: #009e96;
+}
+
+.reviewBtn {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    border: #dbdbdb 1px solid;
+    font-size: 16px;
+    width: 320px;
+    height: 50px;
+}
+
+.reviewBtn:hover {
+    cursor: pointer;
+    border-color: #009e96;
+}
+
+.pleaseLogin {
+    font-size: 26px;
+    color: #808080;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login {
+    color: #009e96;
+    opacity: 1;
+}
+
+.login::after,
+.login::before {
+    content: " ";
+}
+
+.login:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.7;
+}

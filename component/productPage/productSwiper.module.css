@@ -1,0 +1,114 @@
+.container {
+  z-index: 1000;
+  width: 400px;
+}
+.swiperWrapper {
+  height: 180px;
+  width: 100%;
+  display: flex;
+}
+
+.swiperSlide {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  margin: 3px;
+  height: 140px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.enlargedImg {
+  opacity: 1;
+  width: 100%;
+}
+
+.enlargedImg:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.selected {
+  border: 2px solid #009e96;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #f00;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  z-index: 10;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev::before, .swiper-button-next::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  transform: rotate(-45deg);
+}
+
+.swiper-button-next::before {
+  transform: rotate(135deg);
+}
+

@@ -1,0 +1,175 @@
+.reviewContainer {
+    width: 440px;
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.rankingContainer {
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding-bottom: 10px;
+}
+
+.overallRank {
+    display: flex;
+    margin-right: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.overallRankText {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.overallRankScore {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+    color: #eb6157;
+    font-size: 26px;
+}
+
+.rankCount {
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+    color: #eb6157;
+}
+
+.rankCount:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rankDetail {
+    margin-left: 20px;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+.rankWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0; 
+    margin-top: -14px;
+    margin-bottom: -26px;
+}
+
+.countPercent {
+    width: 140px;
+    margin-right: 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    animation: none;
+}
+
+.branchCount {
+    text-decoration: underline;
+}
+
+.branchCount:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reviewSum {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summaryText {
+    font-size: 14px;
+}
+
+.reviewBtn {
+    color: #009e96;
+    padding: 12px 24px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    border-color: #dbdbdb;
+}
+
+.reviewBtn:hover {
+    border-color: #009e96;
+    cursor: pointer;
+}
+
+.reviewList {
+    list-style-type: none;
+    font-size: 14px;
+    border-bottom: 1px dashed #dbdbdb;
+}
+
+.reviewInfo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.userRating {
+    margin-right: 20px;
+}
+
+.usernameText {
+    font-weight: bold;
+}
+
+.reviewDate {
+    margin-left: auto;
+}
+
+.reviewProduct {
+    margin: 0;
+    padding: 0;
+}
+
+.reviewTitle {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.helpfulContainer {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+
+.helpfulContainer:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.voteIcon {
+    margin-right:10px;
+}
+
+.reviewDropdpwn {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+}
+
+.reviewDropdpwn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

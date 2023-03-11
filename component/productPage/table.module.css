@@ -1,0 +1,21 @@
+.table {
+    border-collapse: collapse;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.tableName,
+.tableValue {
+    border: solid 1px gainsboro;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.tableName {
+    background-color: #F7F7F7;
+    border-left: none;
+}
+
+.tableValue {
+    border-right: none;
+}

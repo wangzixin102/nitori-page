@@ -1,0 +1,164 @@
+.mainContainer {
+    width: 440px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.navWrapper {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.pageNavContainer{
+    display: flex;
+}
+
+.totalPages {
+    margin-right: 10px;
+}
+
+.leftArrow,
+.pageNum,
+.rightArrow {
+    display: inline-block;
+}
+
+.pageNum {
+    padding: 0 5px;
+}
+
+.leftArrow,
+.rightArrow {
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bolder;
+    color: #009e96;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+    text-decoration: underline;
+}
+
+.sortSelection{
+    margin-left: auto;
+}
+
+.qaContainer {
+    font-size: 14px;
+}
+
+.qaList {
+    list-style-type: none;
+    border-bottom: 1px dashed #dbdbdb;
+}
+
+.qaData {
+    font-weight: bold;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.qaDate {
+    font-size: 12px;
+    color: #555555;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.qaAnsData {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.letterA {
+    font-weight: bold;
+}
+
+.answer {
+    padding-right: 10px;
+    margin-left: 10px;
+}
+
+.helpfulContainer {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+
+.helpfulContainer:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.voteIcon {
+    margin-right:10px;
+}
+
+.notion{
+    border: 1px dashed #dbdbdb;
+    padding: 10px;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.notionTitle {
+    color: #eb6157;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+.notionList {
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.notionItem {
+    margin: 0;
+    padding: 0;
+}
+
+.notionText {
+    font-size: 13px;
+    color: #333333;
+}
+
+.notionLink {
+    color: #009e96;
+}
+
+.notionLink:hover {
+    text-decoration: none;
+}
+
+.askQuestion {
+    margin-top: 20px;
+}
+
+.questionInput {
+    width: 420px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: #dbdbdb;
+    box-shadow: none;
+}
+
+.questionBtn {
+    font-size: 13px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: #dbdbdb;
+    box-shadow: none;
+}
+
+.questionBtn:hover {
+    cursor: pointer;
+}

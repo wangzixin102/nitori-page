@@ -1,0 +1,192 @@
+.contentContainer {
+    margin-top: 20px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 0;
+    color: #333333;
+}
+
+.titleText {
+    font-size: 14px;
+    color: #333333;
+}
+
+.productIfo {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.productImg {
+    border-radius: 5px;
+}
+
+.productText {
+    margin: 0;
+    padding: 0;
+    margin-left: 30px;
+}
+
+.subname {
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 16px;
+    color: #333333;
+}
+
+.selection {
+    font-size: 12px;
+    color: #333333;
+}
+
+.reviewContainer {
+    margin-top: 20px;
+}
+
+.formValue {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px dashed #dbdbdb; 
+}
+
+.labelName {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    width: 180px;
+}
+
+.labelRequired {
+    border: 1px solid #eb6157;
+    font-size: 10px;
+    color: #eb6157;
+    font-weight: lighter;
+    padding: 2px 5px;
+    margin-left: 10px;
+}
+
+.ratingBar {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ratingText {
+    padding: 0;
+    margin: 0;
+}
+
+.ratingStar {
+    padding: 0 15px;
+    margin: 0;
+}
+
+.ratingText {
+    font-size: 14px;
+    color: #333333;
+}
+
+.inputWrapper {
+    width: 70%;
+}
+
+.notionList {
+    margin-left: 20px;
+}
+
+.inputRequired {
+    font-size: 12px;
+    color: #808080;
+}
+
+.input,
+.textArea {
+    width: 100%;
+}
+
+.inputOnchange {
+    font-size: 12px;
+    color: #333333;
+}
+
+.onchangeNum {
+    font-weight: bold;
+}
+
+.imgBtn {
+    font-size: 16px;
+    color: white;
+    background-color: #009e96;
+    border: none;
+    opacity: 1;
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+
+.imgBtn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.notionList {
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+.notionItem {
+    font-size: 12px;
+    color: #808080;
+}
+
+.notionItem::before {
+    content: "※ ";
+    left: 0;
+}
+
+.btnWrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.backBtn {
+    width: 320px;
+    height: 50px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #009e96;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+}
+
+.backBtn:hover {
+    cursor: pointer;
+    border-color: #009e96;
+}
+
+.nextBtn {
+    width: 320px;
+    height: 50px;
+    margin-left: 10px;
+    font-size: 16px;
+    background-color: #eb6157;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    opacity: 1;
+}
+
+.nextBtn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

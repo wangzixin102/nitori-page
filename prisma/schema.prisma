@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model recommendation {
+  id        Int      @id @default(autoincrement())
+  productId Int?
+  itemName  String?  @db.VarChar(30)
+  price     String?  @db.VarChar(20)
+  rank      Decimal? @db.Decimal(3, 2)
+  review    Decimal? @db.Decimal(7, 0)
+  imgUrl    String?  @db.VarChar(200)
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  username String @db.VarChar(20)
+  email    String @unique(map: "email_UNIQUE") @db.VarChar(80)
+  password String @db.Text
+}
+
+model banner {
+  id      Int     @id @default(autoincrement())
+  eventId String? @db.VarChar(20)
+  imgUrl  String? @db.VarChar(200)
+}
+
+model category {
+  id           Int     @default(autoincrement())
+  categoryName String? @db.VarChar(30)
+  categoryId   String  @unique(map: "categoryId_UNIQUE") @db.VarChar(20)
+  parentId     String? @db.VarChar(20)
+
+  @@id([id, categoryId])
+}
+
+model product_image {
+  product_id     String?   @db.VarChar(20)
+  product_img_id String?   @db.VarChar(20)
+  imgUrl         String?   @db.VarChar(200)
+  id             Int       @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  products       products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction, map: "product_id")
+
+  @@index([product_id], map: "product_id_idx")
+}
+
+model prop_table {
+  product_id        String? @db.VarChar(20)
+  prop_id           String? @db.VarChar(10)
+  prop_name         String? @db.VarChar(20)
+  show_on_page      Int?    @db.TinyInt
+  show_on_cate_page Int?    @db.TinyInt
+  id                Int     @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  select_on_page    Int?    @db.TinyInt
+  select_dropdown   Int?    @db.TinyInt
+  checked_button    Int?    @db.TinyInt
+}
+
+model sku_image {
+  sku_id     String? @db.VarChar(20)
+  product_id String? @db.VarChar(20)
+  sku_img_id String? @db.VarChar(20)
+  imgUrl     String? @db.VarChar(200)
+  id         Int     @id @unique(map: "id_UNIQUE") @default(autoincrement())
+
+  @@index([sku_id], map: "sku_id_idx")
+}
+
+model sku_table {
+  sku_id     String?   @db.VarChar(20)
+  product_id String?   @db.VarChar(20)
+  stock      String?   @db.VarChar(20)
+  props1     String?   @db.VarChar(50)
+  props2     String?   @db.VarChar(50)
+  props3     String?   @db.VarChar(50)
+  props4     String?   @db.VarChar(50)
+  props5     String?   @db.VarChar(50)
+  props6     String?   @db.VarChar(50)
+  props7     String?   @db.VarChar(50)
+  props8     String?   @db.VarChar(50)
+  props9     String?   @db.VarChar(50)
+  props10    String?   @db.VarChar(50)
+  props11    String?   @db.VarChar(50)
+  props12    String?   @db.VarChar(50)
+  props13    String?   @db.VarChar(50)
+  props14    String?   @db.VarChar(50)
+  props15    String?   @db.VarChar(50)
+  props16    String?   @db.VarChar(50)
+  props17    String?   @db.VarChar(50)
+  props18    String?   @db.VarChar(50)
+  props19    String?   @db.VarChar(50)
+  props20    String?   @db.VarChar(50)
+  props21    String?   @db.VarChar(50)
+  props22    String?   @db.VarChar(50)
+  props23    String?   @db.VarChar(50)
+  props24    String?   @db.VarChar(50)
+  props25    String?   @db.VarChar(50)
+  props26    String?   @db.VarChar(50)
+  props27    String?   @db.VarChar(50)
+  id         Int       @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  products   products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction, map: "sku_table_ibfk_1")
+
+  @@index([product_id], map: "product_id_idx")
+}
+
+model products {
+  root_category_id String?         @db.VarChar(20)
+  category_id      String?         @db.VarChar(20)
+  product_id       String          @unique(map: "product_id_UNIQUE") @db.VarChar(20)
+  product_name     String?         @db.VarChar(40)
+  guarantee        String?         @db.VarChar(10)
+  order_method     String?         @db.VarChar(30)
+  delivery_fee     String?         @db.VarChar(10)
+  return           String?         @db.VarChar(20)
+  id               Int             @unique(map: "id_UNIQUE") @default(autoincrement())
+  product_image    product_image[]
+  sku_table        sku_table[]
+
+  @@id([id, product_id])
+}
+
+model qa_table {
+  id                  Int       @id @default(autoincrement())
+  QA_id               String?   @db.VarChar(20)
+  product_id          String?   @db.VarChar(20)
+  question            String?   @db.Text
+  question_date       DateTime? @db.Date
+  question_user_email String?   @db.Text
+  show_on_page        Int?      @db.TinyInt
+  answer              String?   @db.Text
+  answer_date         DateTime? @db.Date
+  answer_stuff_id     String?   @db.VarChar(20)
+  helpful_count       Int?
+
+  @@index([QA_id], map: "QA_id_idx")
+}
+
+model qa_vote_table {
+  id         Int     @id @default(autoincrement())
+  QA_id      String? @db.VarChar(20)
+  user_email String? @db.VarChar(80)
+
+  @@unique([user_email, QA_id], map: "user_email_QA_id_unique_idx")
+}
+
+model review_image {
+  id            Int     @id @default(autoincrement())
+  review_id     String? @db.VarChar(20)
+  review_img_id String? @db.VarChar(20)
+  imgUrl        String? @db.VarChar(200)
+  review        review? @relation(fields: [review_id], references: [review_id], onDelete: NoAction, onUpdate: NoAction, map: "review_id")
+
+  @@index([review_id], map: "review_id_idx")
+}
+
+model review {
+  id              Int            @id @default(autoincrement())
+  product_id      String?        @db.VarChar(20)
+  review_id       String?        @unique(map: "review_id_UNIQUE") @db.VarChar(20)
+  nickname        String?        @db.VarChar(20)
+  user_email      String?        @db.VarChar(80)
+  review_date     DateTime?      @db.Date
+  review_score    Int?
+  product_subname String?        @db.VarChar(50)
+  review_title    String?        @db.VarChar(50)
+  review_text     String?        @db.VarChar(500)
+  show_on_page    Int?           @db.TinyInt
+  helpful_count   Int?
+  order_id        String?        @db.VarChar(50)
+  review_image    review_image[]
+
+  @@unique([user_email, order_id], map: "user_email_order_id_unique_idx")
+}
+
+model review_vote_table {
+  id         Int     @id @default(autoincrement())
+  review_id  String? @db.VarChar(20)
+  user_email String? @db.VarChar(80)
+
+  @@unique([user_email, review_id], map: "user_email_review_id_unique_idx")
+}
+
+model user_order_table {
+  id              Int       @id @default(autoincrement())
+  user_email      String?   @db.VarChar(80)
+  product_id      String?   @db.VarChar(20)
+  product_subname String?   @db.VarChar(50)
+  selection       String?   @db.VarChar(45)
+  order_date      DateTime? @db.Date
+  imgUrl          String?   @db.VarChar(500)
+  order_id        String?   @db.VarChar(20)
+}
+
+model favourite_products {
+  id          Int     @id @default(autoincrement())
+  user_email  String? @db.VarChar(80)
+  product_id  String? @db.VarChar(20)
+  sku_subname String? @db.VarChar(50)
+  sku_price   String? @db.VarChar(20)
+  sku_imgUrl  String? @db.VarChar(200)
+  sku_id      String? @db.VarChar(20)
+  selection   String? @db.VarChar(80)
+  list_name   String? @db.VarChar(20)
+
+  @@unique([user_email, sku_id], map: "user_email_sku_id_unique_idx")
+}

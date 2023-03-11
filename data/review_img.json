@@ -1,0 +1,20 @@
+[
+    {   
+        "id": 1,
+        "review_id": "rv1011101-1",
+        "review_img_id": "rv1011101-1-1",
+        "imgUrl": "https://p1-a50ece1c.imageflux.jp/c/f=webp:jpeg,w=1024,h=1024,a=0/store/reviewattachmentfile/53/13788/file/0c0238369d8e015918f2da716a3ae957.jpeg"
+    },
+    {   
+        "id": 2,
+        "review_id": "rv1012101-2",
+        "review_img_id": "rv1012101-2-1",
+        "imgUrl": "https://p1-a50ece1c.imageflux.jp/c/f=webp:jpeg,w=1024,h=1024,a=0/store/reviewattachmentfile/53/9924/file/df65341a89c0aee06cff3c7acf1092ed.jpeg"
+    },
+    {   
+        "id": 3,
+        "review_id": "rv1012102-1",
+        "review_img_id": "rv1012102-1-1",
+        "imgUrl": "https://p1-a50ece1c.imageflux.jp/c/f=webp:jpeg,w=1024,h=1024,a=0/store/reviewattachmentfile/53/19836/file/2d9f829fc1114e02552a0b4108380b41.jpg"
+    }
+]

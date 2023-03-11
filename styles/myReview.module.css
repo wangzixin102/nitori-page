@@ -1,0 +1,104 @@
+.content {
+    margin-top: 20px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.notionContainer {
+    margin-left: auto;
+}
+
+.notionBtn {
+    border-color: #dbdbdb;
+    color: #009e96;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.notionBtn:hover {
+    border-color: #009e96;
+    cursor: pointer;
+}
+
+.notionList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.notionItem {
+    font-size: 12px;
+    color: #808080;
+}
+
+.notionItem::before {
+    content: "※ ";
+    left: 0;
+}
+
+.historyContainer {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 20px;
+}
+
+.orderImage {
+    margin-top: 16px;
+    border-radius: 5px;
+}
+
+.orderImage {
+    cursor: pointer;
+}
+
+.orderDetails {
+    margin-left: 30px;
+}
+
+.subname {
+    font-size: 16px;
+    color: #333333;
+}
+
+.subname:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.selection {
+    font-size: 13px;
+    color: #333333;
+}
+
+.reviewBtn {
+    background-color: #009e96;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px;
+    opacity: 1;
+}
+
+.reviewBtn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.noRecords {
+    color: #333333;
+    font-size: 18px;
+}

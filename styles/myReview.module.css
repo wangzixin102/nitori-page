@@ -1,5 +1,5 @@
 .content {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -20,7 +20,7 @@
 }
 
 .notionBtn {
-    border-color: #dbdbdb;
+    border: #dbdbdb 1px solid;
     color: #009e96;
     background-color: white;
     border-radius: 5px;
@@ -41,6 +41,7 @@
 .notionItem {
     font-size: 12px;
     color: #808080;
+    padding-bottom: 10px;
 }
 
 .notionItem::before {
@@ -79,7 +80,7 @@
 }
 
 .selection {
-    font-size: 13px;
+    font-size: 1px;
     color: #333333;
 }
 
@@ -100,5 +101,5 @@
 
 .noRecords {
     color: #333333;
-    font-size: 18px;
+    font-size: 14px;
 }

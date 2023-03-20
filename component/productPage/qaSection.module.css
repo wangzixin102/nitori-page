@@ -44,8 +44,12 @@
     text-decoration: underline;
 }
 
-.sortSelection{
+.sortSelection {
     margin-left: auto;
+}
+
+.selections:focus {
+    outline: none;
 }
 
 .qaContainer {
@@ -146,8 +150,12 @@
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
-    border-color: #dbdbdb;
+    border: #dbdbdb 1px solid;
     box-shadow: none;
+}
+
+.questionInput:focus {
+    outline: none;
 }
 
 .questionBtn {
@@ -155,7 +163,7 @@
     padding: 10px;
     background-color: white;
     border-radius: 5px;
-    border-color: #dbdbdb;
+    border: #dbdbdb 1px solid;
     box-shadow: none;
 }
 

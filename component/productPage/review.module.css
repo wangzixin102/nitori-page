@@ -105,7 +105,7 @@
     background-color: white;
     border-radius: 5px;
     font-size: 16px;
-    border-color: #dbdbdb;
+    border: #dbdbdb 1px solid;
 }
 
 .reviewBtn:hover {

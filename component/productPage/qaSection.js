@@ -111,7 +111,12 @@ export default function QA () {
             </div>
 
             <div className={styles.sortSelection}>
-                <select id="orderBy" value={orderBy} onChange={handleSelectChange}>
+                <select 
+                    id="orderBy" 
+                    value={orderBy} 
+                    onChange={handleSelectChange} 
+                    className={styles.selections}
+                >
                     <option value="question_date">新しい順</option>
                     <option value="helpful_count">トップ評価</option>
                 </select>

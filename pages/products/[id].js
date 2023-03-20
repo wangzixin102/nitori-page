@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useSWR from "swr";
-import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import Cookies from 'universal-cookie';
@@ -16,6 +14,8 @@ import Table from '@/component/productPage/table';
 import QAList from '@/component/productPage/qaSection';
 import Review from '@/component/productPage/review'
 
+import closeIcon from '@/public/icon/close.svg';
+import addCartIcon from '@/public/icon/add-cart.svg'
 import favouriteProduct from '@/public/icon/favourite-product.svg';
 import styles from '../../styles/product.module.css';
 
@@ -24,7 +24,6 @@ export async function getStaticPaths() {
   if (!Array.isArray(products.data)) {
     throw new Error(`something went wrong`)
   };
-
   const paths = products.data.map((product) => ({
     params: { id: product.id.toString() }
   }));
@@ -35,7 +34,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const productId = params.id;
   const { product, productImg, sku, skuImg, skuProp } = await getProductData(productId);
-
   return {
     props: {
       product: product[0],
@@ -57,21 +55,17 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
   const cookies = new Cookies();
   const token = cookies.get('token');
   const { userData } = getUserData();
-  const [liked, setLiked] = useState(false);
-  const fetcher = async (url) => await axios.get(url).then((res) => res.data);
-  const { data: alreadyLiked, error } = useSWR('../api/user/liked-products', fetcher);
-  if(error) return <div>An error occured.</div>;
-  if (!alreadyLiked) return <div>Loading ...</div>;
+  const [hasVoted, setHasVoted] = useState(false);
+  const [addAmount, setAddAmount] = useState('1');
+  const [addProductModal, setAddProductModal] = useState(false);
 
   // match props# and props name by sku and skuprop 
   function mapSkuPropsToNames(sku, skuProp) {
     const mappedPropsArr = sku.map((skuItem) => {
       const mappedProps = {};
-
       skuProp.forEach((prop) => {
         const propName = prop.prop_name;
         const propId = prop.prop_id;
-
         if (skuItem[`${propId}`] !== undefined) {
           mappedProps[propName] = skuItem[`${propId}`]
         }
@@ -88,16 +82,13 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
   // get selection options in dropdown
   function getSelectionOptions(selectionProps, skuWithName) {
     const selectionOptions = [];
-  
     selectionProps.forEach(prop => {
       const options = [];
-  
       skuWithName.forEach(sku => {
         if (sku[prop.prop_name] && !options.includes(sku[prop.prop_name])) {
           options.push(sku[prop.prop_name])
         }
       });
-  
       selectionOptions.push({
         propName: prop.prop_name,
         options: options
@@ -152,47 +143,77 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
     }, {})
   });
 
-  // submit sku data
+  // submit sku selection data
   const formatObject = (obj) => {
     const props = Object.keys(obj);
     const formattedProps = props.map(prop => `${prop}:${obj[prop]}`);
     return formattedProps.join('/');  
   }
-  const formattedSku = formatObject(selectedOptions)
+  const formattedSku = formatObject(selectedOptions);
+
+  const handleAddProduct = async() => {
+    try {
+      const response = await axios.post('/api/user/cart/cart', {
+        product_id: productId,
+        user_email: userData.email,
+        sku_imgUrl: currentImgs[0],
+        sku_subname: currentSku.subname,
+        sku_price: currentSku.price,
+        sku_id: currentSku.product_sub_id,
+        selection: formattedSku,
+        order_method: product.order_method,
+        amount: addAmount
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+        console.error(error);
+    }
+  }
+
+  const handleCartPage = () => {
+    router.push('/cart')
+  }
 
   const handleLikedProduct = async (e) => {
     e.preventDefault();
-    if (!alreadyLiked.includes(id)) {
-      setLiked(true);
-      alreadyLiked.push(currentSku.product_sub_id); 
-    } else {
       try {
-        const response = await axios.post('/api/user/liked-products', {
-            product_id: productId,
-            user_email: userData.email,
-            sku_imgUrl: currentImgs[0],
-            sku_subname: currentSku.subname,
-            sku_price: currentSku.price,
-            sku_id: currentSku.product_sub_id,
-            selection: formattedSku
+        const response = await axios.post('/api/user/wishlist/liked-products', {
+          product_id: productId,
+          user_email: userData.email,
+          sku_imgUrl: currentImgs[0],
+          sku_subname: currentSku.subname,
+          sku_price: currentSku.price,
+          sku_id: currentSku.product_sub_id,
+          selection: formattedSku,
+          order_method: product.order_method
         }, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-        );
+        });
         console.log(response.data);
+        setHasVoted(true)
       } catch (error) {
           console.error(error);
       }
+    }
+
+    useEffect(() => {
+      async function fetchVoteHistory() {
+        const alreadyLiked = await axios.get('../api/user/wishlist/liked-products');
+        setHasVoted(alreadyLiked.data.some((vote) => vote.sku_id === currentSku.product_sub_id));
       }
-  }
+      fetchVoteHistory();
+    }, [currentSku.product_sub_id]);
 
   return (
     <div className={styles.mainContainer}>
       <Head>
         <title>{product.product_name}</title>
-        <Link rel="icon" href="/favicon.ico" />
       </Head>
  
       <div>
@@ -278,21 +299,73 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
               <p className={styles.orderProp}>
                 <span className={styles.orderInfo}>
                   数量
+                  <input
+                    className={styles.amountInput}
+                    type='text'
+                    value={addAmount}
+                    onChange={(e) => setAddAmount(e.target.value)}
+                  />
                 </span>
               </p>
             </div>
 
             <div className={styles.orderBuyContainer}>
               <p className={styles.orderPrice}>{currentSku.price}</p>
-              <button className={styles.orderBtn}>カートに入れる</button>
+              <button 
+                className={styles.orderBtn} 
+                onClick={() => {
+                  handleAddProduct();
+                  setAddProductModal(!addProductModal);
+                }}
+              >
+                <Image
+                  className={styles.addProductIcon}
+                  src={addCartIcon}
+                  alt=''
+                  width={30}
+                  height={30}
+                />
+                <p>カートに入れる</p>
+              </button>
+              {addProductModal && (
+                <div className={styles.addProductModalContainer}>
+                  <div className={styles.addProductModalContent}>
+                    <div className={styles.titleWrapper}>
+                        <p className={styles.titleText}>カートに追加しました</p>
+                        <button 
+                          onClick={() => {setAddProductModal(!addProductModal)}} 
+                          className={styles.modalCloseBtn}
+                        >
+                          <Image
+                            className={styles.modalCloseImg}
+                            src={closeIcon}
+                            alt=''
+                            width={30}
+                            height={30}
+                          />
+                        </button>
+                    </div> 
+                    <button className={styles.turnCartPage} onClick={handleCartPage}>
+                      <p>カートを見る</p>
+                      <Image
+                        className={styles.addProductIcon2}
+                        src={addCartIcon}
+                        alt=''
+                        width={30}
+                        height={30}
+                      />
+                    </button>  
+                  </div>             
+                </div>
+              )}
               <div className={styles.functionsBtn}>
                 <button 
-                  className={styles.likeAddBtn} 
-                  onClick={liked ? null : handleLikedProduct}
-                  disabled={liked}
+                  className={`${styles.likeAddBtn} ${hasVoted ? styles.disabledBtn : ''}`} 
+                  onClick={handleLikedProduct}
+                  disabled={hasVoted}
                 >
                   <Image
-                    className={styles.likeIcon}
+                    className={`${styles.likeIcon} ${hasVoted ? styles.hasVoted : ''}`}
                     src={favouriteProduct}
                     alt=''
                     width={30}

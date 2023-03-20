@@ -106,7 +106,7 @@ export default async function getReview(req, res) {
             where: {
                 product_id: productId,
                 show_on_page: 0
-            },
+            }
         });
     
         const averageRank = averageRankData._avg.review_score.toFixed(1);

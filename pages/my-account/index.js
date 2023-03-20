@@ -48,8 +48,16 @@ export default function Account() {
         router.reload();
     };
 
+    const handleOrderHistoryPage = () => {
+        router.push('/my-account/order-history')
+    }
+
     const handleWishListPage = () => {
         router.push('/my-account/wishlist')
+    }
+
+    const handleProfileEditPage = () => {
+        router.push('/my-account/profileEdit')
     }
 
     const handleWriteReview = (orderId) => {
@@ -106,7 +114,7 @@ export default function Account() {
 
                     <div className={styles.infoWrapper}>
                         <div className={styles.infoDetails}>
-                            <div className={styles.girdWrapper}>
+                            <div className={styles.girdWrapper} onClick={handleOrderHistoryPage}>
                                 <Image 
                                     className={styles.gridIcon}
                                     alt=""
@@ -136,7 +144,7 @@ export default function Account() {
                                 />
                                 <p className={styles.gridText}>お気に入り店舗</p>
                             </div>
-                            <div className={styles.girdWrapper}>
+                            <div className={styles.girdWrapper} onClick={handleProfileEditPage}>
                                 <Image 
                                     className={styles.gridIcon}
                                     alt=""

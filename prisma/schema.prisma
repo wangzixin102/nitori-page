@@ -194,18 +194,55 @@ model user_order_table {
   order_date      DateTime? @db.Date
   imgUrl          String?   @db.VarChar(500)
   order_id        String?   @db.VarChar(20)
+  status          String?   @db.VarChar(20)
+  guarantee       String?   @db.VarChar(45)
+  amount          Int?
+  set_up          Int?      @db.TinyInt
+  pick_up         Int?      @db.TinyInt
+  price           Int?
 }
 
 model favourite_products {
-  id          Int     @id @default(autoincrement())
-  user_email  String? @db.VarChar(80)
-  product_id  String? @db.VarChar(20)
-  sku_subname String? @db.VarChar(50)
-  sku_price   String? @db.VarChar(20)
-  sku_imgUrl  String? @db.VarChar(200)
-  sku_id      String? @db.VarChar(20)
-  selection   String? @db.VarChar(80)
-  list_name   String? @db.VarChar(20)
+  id               Int     @id @default(autoincrement())
+  user_email       String? @db.VarChar(80)
+  product_id       String? @db.VarChar(20)
+  sku_subname      String? @db.VarChar(50)
+  sku_price        String? @db.VarChar(20)
+  sku_imgUrl       String? @db.VarChar(200)
+  sku_id           String? @db.VarChar(20)
+  selection        String? @db.VarChar(80)
+  list_name        String? @db.VarChar(20)
+  order_method     String? @db.VarChar(50)
+  point            String? @db.VarChar(20)
+  deliver_category String? @db.VarChar(20)
+  
+  @@unique([user_email, sku_id], map: "user_email_sku_id_unique_idx")
+  @@unique([user_email, list_name], map: "user_email_list_name_unique_idx")
+}
+
+model favourite_list {
+  id         Int     @id @default(autoincrement())
+  user_email String? @db.VarChar(45)
+  list_name  String? @db.VarChar(45)
+
+  @@unique([user_email, list_name], map: "user_email_list_name_unique_idx")
+}
+
+model cart {
+  id               Int     @id @default(autoincrement())
+  user_email       String? @db.VarChar(20)
+  product_id       String? @db.VarChar(20)
+  sku_id           String? @db.VarChar(20)
+  sku_subname      String? @db.VarChar(80)
+  selection        String? @db.VarChar(100)
+  price            String? @db.VarChar(20)
+  imgUrl           String? @db.VarChar(200)
+  order_method     String? @db.VarChar(50)
+  point            String? @db.VarChar(20)
+  deliver_fee      String? @db.VarChar(20)
+  amount           Int?
+  status           String? @db.VarChar(20)
+  deliver_category String? @db.VarChar(20)
 
   @@unique([user_email, sku_id], map: "user_email_sku_id_unique_idx")
 }

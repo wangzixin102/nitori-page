@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import useSWR from "swr";
-import Image from "next/image";
+import Image from "next/image"; 
 
 import getUserData from "@/lib/userData";
 
@@ -17,14 +17,16 @@ import styles from './navbar.module.css';
 
 const Navbar = () => {
     const router = useRouter();
-    const {userData} = getUserData();
-    const [selectedCategory, setSelectedCategory] = useState('すべて');
+    const { userData } = getUserData();
     const [topLevelCategories, setTopLevelCategories] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
+    const [addedProductsAmount, setAddedProductsAmount] = useState(0);    
+    const [selectedCategory, setSelectedCategory] = useState('すべて');
     const [categoryDropdown, setCategoryDropdown] = useState(false);
-    const [activeCategory, setActiveCategory] = useState(null);
-
+ 
     const fetcher = async (url) => await axios.get(url).then((res) => res.data);
-    const { data: categories, error } = useSWR("/api/category", fetcher);
+    const { data: categories, error: categoriesErr } = useSWR("/api/category", fetcher);
+    const { data: likedProducts } = useSWR('/api/user/wishlist/liked-products');
 
     useEffect(() => {
         if (categories) {
@@ -53,7 +55,32 @@ const Navbar = () => {
         }
     }, [categories]);
 
-    if (error) return <div>An error occurred.</div>;
+    useEffect(() => {
+        if (userData && userData.email && likedProducts) {
+            const filteredList = likedProducts.filter((product) => {
+                return product.user_email === userData.email;
+            });
+            setFilteredList(filteredList);
+        }
+    }, [userData, likedProducts]);
+
+    useEffect(() => {
+        if (userData && userData.email) {
+            const fetcher = async (url) => await axios.get(url).then((res) => res.data);
+            const getAddedProducts = async () => {
+                const addedProducts = await fetcher('/api/user/cart/cart');
+                const filteredProducts = addedProducts.filter((item) => item.status === "カート");
+                const totalAmount = filteredProducts.reduce((acc, item) => acc + item.amount, 0);
+                setAddedProductsAmount(totalAmount);
+            }
+            getAddedProducts();
+        } else {
+            setAddedProductsAmount(0);
+        }
+    }, [userData]);
+    
+
+    if (categoriesErr) return <div>An error occurred.</div>;
     if (!categories) return <div>Loading ...</div>;
 
     const handleOnClickHome = (e) => {
@@ -67,6 +94,10 @@ const Navbar = () => {
 
     const handleWishListPage = () => {
         router.push('/my-account/wishlist')
+    }
+
+    const handleCartPage = () => {
+        router.push('/cart')
     }
 
     const handleCategoryDropdown = (e) => {
@@ -166,7 +197,7 @@ const Navbar = () => {
                         />
                         <p className={styles.functionTitle}>店舗検索</p>
                     </div>
-                    <div className={styles.functionsWrapper}  onClick={handleWishListPage}>
+                    <div className={styles.functionsWrapper} onClick={handleWishListPage}>
                         <Image
                             className={styles.functionIcon}
                             src={favouriteProducts}
@@ -174,10 +205,14 @@ const Navbar = () => {
                             width={30}
                             height={30}
                         />
-                        <span className={styles.likeCount}>0</span>
+                        {!userData || userData.length === 0 ? (
+                            <span className={styles.likeCount}>0</span>
+                        ) : (
+                            <span className={styles.likeCount}>{filteredList.length}</span>
+                        )}
                         <p className={styles.functionTitle}>お気に入り</p>
                     </div>
-                    <div className={styles.functionsWrapper}>
+                    <div className={styles.functionsWrapper} onClick={handleCartPage}>
                         <Image
                             className={styles.functionIcon}
                             src={cart}
@@ -185,7 +220,11 @@ const Navbar = () => {
                             width={30}
                             height={30}
                         />
-                        <span className={styles.likeCount}>0</span>
+                        {!userData || userData.length === 0 ? (
+                            <span className={styles.addCount}>0</span>
+                        ) : (
+                            <span className={styles.addCount}>{addedProductsAmount}</span>
+                        )}
                         <p className={styles.functionTitle}>カート</p>
                     </div>
                 </div>

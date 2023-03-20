@@ -44,6 +44,13 @@ export default async function RegisterController(req, res) {
                     password: hashedPassword,
                 },
             });
+
+            const result = await prisma.favourite_list.create({
+                data: {
+                    user_email: email,
+                    list_name: "お気に入り商品"
+                }
+            })
             
             const token = jwt.sign(
                 { username, email }, 

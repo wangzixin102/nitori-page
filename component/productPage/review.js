@@ -6,7 +6,6 @@ import { Rating } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import getUserData from '@/lib/userData';
-// import ReviewModal from './reviewModal';
 
 import voteIcon from '../../public/icon/advice-vote.svg';
 import styles from './review.module.css';
@@ -14,7 +13,6 @@ import styles from './review.module.css';
 export default function Review() {
     const router = useRouter();
     const { userData, isLoggedIn } = getUserData();   
-    // const [modalOpen, setModalOpen] = useState(false);
     const [orderBy, setOrderBy] = useState();
     const [reviews, setReviews] = useState();
     const [totalReviewCounts, setTotalReviewCounts] = useState();
@@ -180,17 +178,10 @@ export default function Review() {
                                         src={rv.review_image.length > 0 ? rv.review_image[0].imgUrl : ''}
                                         width={80}
                                         height={80 * (3 / 4)}
-                                        // onClick={() => setModalOpen(!modalOpen)}
                                     />
                                 ) : (
                                     <p></p>
                                 )}
-                                {/* <ReviewModal 
-                                    isOpen={modalOpen} 
-                                    onClose={() => setModalOpen(false)}
-                                    className={styles.modalContainer}
-                                /> */}
-
                                 {rv.voted ? (
                                     <p>フィードバックありがとうございます</p>
                                 ) : (

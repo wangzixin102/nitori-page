@@ -12,7 +12,7 @@ import styles from '../../../styles/myReview.module.css';
 
 export default function myReview () {
     const router = useRouter();
-    const {userData} = getUserData();
+    const { userData } = getUserData();
 
     const fetcher = async (url) => await axios.get(url).then((res) => res.data);
     const { data: userOrders, error } = useSWR('/api/user/user-order', fetcher);
@@ -21,7 +21,7 @@ export default function myReview () {
 
     const filteredOrders = userOrders.filter((order) => {
         if (userData && userData.email) {
-            return order.user_email === userData.email;
+            return order.user_email === userData.email && order.status === 'お渡し済';
         }
         return false;
     });
@@ -93,7 +93,7 @@ export default function myReview () {
                         ))}
                     </div>
                 ) : (
-                    <p className={styles.noRecords}>No Records</p>
+                    <p className={styles.noRecords}>注文履歴がありません。</p>
                 )}
             </div>
         </div>

@@ -1,0 +1,45 @@
+.mainContent {
+    width: 800px;
+    margin: 40px auto 20px auto;
+    color: #333333;
+    font-size: 14px;
+}
+
+.titleWrapper {
+    padding-top: 20px;
+}
+
+.pageTitle {
+    font-size: 30px;
+}
+
+.loginDate {
+    font-weight: bold;
+    text-align: right;
+}
+
+.notionBox {
+    border: #dbdbdb 1px solid;
+    padding: 20px;
+}
+
+.emailReceiveWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.emailReceiveText {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.emailReceive {
+    padding: 0;
+    margin: 0 30px;
+}
+
+.notionText {
+    padding: 0;
+    margin: 20px 0 0 0;
+}

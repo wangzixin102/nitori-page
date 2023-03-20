@@ -23,7 +23,6 @@ export default function Products () {
         <div>
             <Head>
                 <title>All Products</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <div>

@@ -1,0 +1,100 @@
+.mainContainer {
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+.filterTitle {
+    font-size: 24px;
+    margin: 0 0 2px 0;
+    padding: 15px 30px;
+    background-color: #F7F7F7;
+}
+
+.currentFilterContainer {
+    font-size: 18px;
+    margin: 0 0 2px 0;
+    padding: 20px 30px;
+    background-color: #F7F7F7;
+}
+
+.currentFilter {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.option {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filterValue {
+    margin: 0 5px 5px 0;
+    padding: 2px 6px;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 10px;
+    border: #dbdbdb 1px solid;
+}
+
+.filterValue:hover {
+    cursor: pointer;
+}
+
+.clearAllBtn {
+    font-size: 16px;
+    margin: 20px 0 0 0;
+    padding: 12px;
+    border: #dbdbdb 1px solid;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    color: #009e96;
+}
+
+.clearAllBtn:hover {
+    cursor: pointer;
+    border-color: #009e96;
+}
+
+.propContainer {
+    margin: 0 0 2px 0;
+    padding: 20px 30px;
+    background-color: #F7F7F7;
+}
+
+.propName {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.propWrapper {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.propCheckBox {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.propValue {
+    margin: 0;
+    padding: 0 0 0 5px;
+    font-size: 14px;
+}
+
+.propWrapper:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.propWrapper:hover {
+    cursor: pointer;
+}

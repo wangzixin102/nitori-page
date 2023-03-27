@@ -1,0 +1,50 @@
+.mainContent {
+    display: flex;
+    align-items: flex-start;
+    color: #333333;
+    margin-top: 30px;
+}
+
+.filterCriteria {
+    padding: 0;
+    margin: 0 20px 0 0;
+    min-width: 320px;
+}
+
+.pageTitle {
+    font-size: 30px;
+    margin: 0 15px;
+    padding: 0;
+}
+
+.selectionBar {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    background-color: #F7F7F7;
+    margin: 10px 15px;
+    padding: 5px 20px;
+    border-top: 2px solid #009e96;
+}
+
+.productAmount {
+    padding: 0;
+    margin: 0;
+}
+
+.amountNum {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.amountRange {
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+
+.productsDisplay {
+    display: flex;
+    align-items: flex-start;
+}

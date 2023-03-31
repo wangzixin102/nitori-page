@@ -2,14 +2,32 @@ import React, { Key } from "react";
 import { useRouter } from "next/router";
 import styles from "./categoryFilter.module.css";
 
-function CategoryComponent({ data, childCategory, parentCategory }) {
+type CategoryComponentProps = {
+  data: any;
+  childCategory: any;
+  parentCategory: any;
+}
+
+type ChildCategory = {
+  categoryId: string;
+  categoryName: string;
+  name: string;
+};
+
+type Category = {
+  categoryId: string;
+  name: string;
+  children?: ChildCategory[];
+};
+
+function CategoryComponent({ data, childCategory, parentCategory }:  CategoryComponentProps) {
   const router = useRouter();
-  const findCategory = (categories: any, categoryId: string) => {
+  const findCategory = (categories: Category[], categoryId: string): Category | null => {
     for (const category of categories) {
       if (category.categoryId === categoryId) {
         return category;
       }
-      const nestedCategory = findCategory(category.children || [], categoryId);
+      const nestedCategory = category.children && findCategory(category.children, categoryId);
       if (nestedCategory) {
         return nestedCategory;
       }

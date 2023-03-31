@@ -110,7 +110,8 @@ export default async function getReview(req: NextApiRequest, res: NextApiRespons
             }
         });
     
-        const averageRank = averageRankData._avg.review_score.toFixed(1);
+        const averageRank = averageRankData._avg.review_score !== null
+            ? averageRankData._avg.review_score.toFixed(1): 'N/A';
     
         const allScores = [5, 4, 3, 2, 1];
         const countData = allScores.map((score) => {

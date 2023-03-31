@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import styles from './functionStyle.module.css';
 
 interface PropertyValue {
@@ -6,10 +6,19 @@ interface PropertyValue {
     count: number;
 }
 
+interface PropertyObject {
+    [key: string]: Set<string>;
+}  
+
 interface Props {
     sku: any[];
     onSelectedValuesChange: (newValues: {[key: string]: string[]}) => void;
     initialSelectedValues: { [key: string]: string[] };
+}
+
+interface UniqueValue {
+    value: string;
+    count: number;
 }
   
 const FunctionStyle: React.FC<Props> = (
@@ -18,6 +27,7 @@ const FunctionStyle: React.FC<Props> = (
     const [selectedValues, setSelectedValues] = useState<{[key: string]: string[]}>(
         initialSelectedValues
     );
+
     const uniqueProperties = sku.reduce((
         acc: { [key: string]: { [value: string]: Set<string> } },
         obj: { [key: string]: any }
@@ -33,8 +43,8 @@ const FunctionStyle: React.FC<Props> = (
         return acc;
     }, {});
   
-    const propertiesList = Object.entries(uniqueProperties).map(([key, values]) => {
-        const uniqueValues = Object.entries(values)
+    const propertiesList = Object.entries<PropertyObject>(uniqueProperties).map(([key, values]) => {
+        const uniqueValues: UniqueValue[] = Object.entries(values)
             .filter(([value, productIds]) => productIds.size > 0)
             .map(([value, productIds]) => ({
                 value,
@@ -45,7 +55,7 @@ const FunctionStyle: React.FC<Props> = (
             values: uniqueValues,
         };
     });
-
+                      
     const handleValueChange = (propertyName: string, value: string) => {
         setSelectedValues((prevValues) => {
             const selectedValuesForProperty = prevValues[propertyName] || [];
@@ -65,9 +75,9 @@ const FunctionStyle: React.FC<Props> = (
                 return newValues;
             }
         });
-      };
+    };
       
-      const clearOne = (key: string, value: string) => {
+    const clearOne = (key: string, value: string) => {
         setSelectedValues((prevValues) => {
             const newValues = {
                 ...prevValues,
@@ -76,9 +86,18 @@ const FunctionStyle: React.FC<Props> = (
             onSelectedValuesChange(newValues);
             return newValues;
         });
-      };
+    };
 
-    const clearAll = () => { setSelectedValues({}) };
+    const clearAll = () => {
+        setSelectedValues((prevValues) => {
+            const newValues: {[key: string]: string[]} = {};
+            for (const key in prevValues) {
+                newValues[key] = [];
+            }
+            onSelectedValuesChange(newValues);
+            return newValues;
+        });
+    };
 
     return (
         <div className={styles.mainContainer}>

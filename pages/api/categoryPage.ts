@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export default async function getCategories(req: NextApiRequest, res: NextApiResponse) {
   const categories = await prisma.category.findMany();
 
-  const buildNestedCategories = (categories: any[], parentId = 'null') => {
+  const buildNestedCategories = (categories: any[], parentId = 'null'): any[] => {
     const childCategories = categories.filter(category => category.parentId === parentId);
     if (childCategories.length === 0) {
       return [];

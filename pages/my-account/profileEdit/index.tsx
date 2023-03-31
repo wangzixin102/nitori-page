@@ -11,9 +11,14 @@ import support from '../../../public/icon/support.svg';
 import cart from '../../../public/icon/shopping-cart.svg';
 import styles from '../../../styles/profileEdit.module.css'
 
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function profileEdit () {
     const router = useRouter();
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const [addedProductsAmount, setAddedProductsAmount] = useState(0);
     
     useEffect(() => {
@@ -35,7 +40,7 @@ export default function profileEdit () {
         }
     }, [userData]);
 
-    const handleOnClickHome = (e) => {
+    const handleOnClickHome = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         router.push("/")
     };

@@ -1,6 +1,7 @@
-import { useState, useEffect, useContext, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useContext, useRef, SetStateAction } from "react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
+import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,27 +14,31 @@ import styles from "../productPage/productSwiper.module.css";
 
 SwiperCore.use([Navigation, Pagination]);
 
+interface Image {
+  imgUrl: string;
+}
 
 export default function MySwiper() {
-  const currentImgs = useContext(SlideContext);
+  const currentImgs: Image[] = useContext(SlideContext) ?? [];  
   const slideSize = 3;
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleImageClick = (image, slideIndex) => {
+  const handleImageClick = (image: SetStateAction<string>, slideIndex: SetStateAction<number>) => {
     setSelectedImage(image);
     setSelectedSlideIndex(slideIndex);
   };
-
+ 
   useEffect(() => {
     if (currentImgs && currentImgs.length > 0) {
-      setSelectedImage(currentImgs[0].imgUrl);
+      setSelectedImage(currentImgs[0]?.imgUrl || "");
       setSelectedSlideIndex(0);
 
-      if (swiperRef.current && swiperRef.current.swiper) {
-        swiperRef.current.swiper.slideTo(0);
+      const slideToIndex = 0;
+      if (swiperRef.current && typeof swiperRef.current.slideTo === "function") {
+        swiperRef.current.slideTo(slideToIndex);
       }
     }
   }, [currentImgs]);
@@ -49,7 +54,7 @@ export default function MySwiper() {
   }
 
   const selectedSlide = slides.find((slide) =>
-    slide.some((img) => img.imgUrl === selectedImage)
+    slide.some((img: { imgUrl: string; }) => img.imgUrl === selectedImage)
   );
 
   const selectedSlideIndexByImage =
@@ -83,12 +88,16 @@ export default function MySwiper() {
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination]}
           initialSlide={selectedSlideIndexByImage || 0}
-          onSlideChange={(swiper) =>
-            setSelectedImage(swiper.slides[swiper.activeIndex].querySelector("img").src)
-          }
+          onSlideChange={(swiper) => {
+            const currentSlide = swiper.slides[swiper.activeIndex];
+            const imageElement = currentSlide.querySelector("img");
+            if (imageElement) {
+              setSelectedImage(imageElement.src);
+            }
+          }}
           className={styles.swiper}
           key={currentImgs.length} 
-          ref={swiperRef} 
+          ref={swiperRef as React.RefObject<SwiperRef>}
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>

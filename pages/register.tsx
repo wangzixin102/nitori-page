@@ -49,7 +49,7 @@ const Register = () => {
             const response = await axios.post('./api/user/register', data);
             const redirectPath = Array.isArray(router.query.redirect) ? router.query.redirect.join('') : router.query.redirect || '/';
             router.push(redirectPath);
-        } catch (error) {
+        } catch (error: any) {
           if (error.response) {
                 setServerErrors(error.response.data);
           } else {
@@ -73,7 +73,6 @@ const Register = () => {
                         <input 
                             className={styles.inputText} 
                             type="text" 
-                            name="email" 
                             placeholder="Email"
                             {...register('email', { required: true })} 
                         /><br/>
@@ -85,7 +84,6 @@ const Register = () => {
                         <input 
                             className={styles.inputText}
                             type="text" 
-                            name="username" 
                             placeholder="Username"
                             {...register('username', { required: true })} 
                         /><br/>
@@ -97,7 +95,6 @@ const Register = () => {
                         <input 
                             className={styles.inputText}
                             type="password" 
-                            name="password" 
                             placeholder="Password"
                             {...register('password', { required: true })} 
                         /><br/>

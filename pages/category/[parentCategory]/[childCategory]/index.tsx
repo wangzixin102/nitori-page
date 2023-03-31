@@ -23,22 +23,24 @@ export default function ChildCategory () {
     };
     
     useEffect(() => {
-        if (childCategory) {
+        if (childCategory && parentCategory) { 
             const category = Array.isArray(childCategory) 
             ? childCategory[childCategory.length - 1] : childCategory;
             
             const parent = Array.isArray(parentCategory)
             ? parentCategory[parentCategory.length - 1] : parentCategory;
-            
-            getCategoryData(parent, category).then((data) => setData(data));
+    
+            if (typeof parent === 'string') { 
+                getCategoryData(parent, category).then((data) => setData(data));
+            }
         }
     }, [parentCategory, childCategory]);
-                  
+                      
     if (!data) { return <div>Loading...</div> };
     console.log('data', data);
 
     const getCategoryName = (childCategory: string | string[]) => {
-        let categoryName: string;
+        let categoryName: string = "";
       
         data.category.some((category: { 
             categoryId: string; categoryName: string; children: any[]; 
@@ -147,9 +149,9 @@ export default function ChildCategory () {
         const skuImg = mappedData.skuImgs.find((img: any) => img.product_id === sku.product_id);
         return {
             product_id: sku.product_id,
-            category_id: product.category_id,
-            product_name: product.product_name,
-            imgUrl: skuImg.imgUrl,
+            category_id: product?.category_id,
+            product_name: product?.product_name,
+            imgUrl: skuImg?.imgUrl,
             ...sku,
             ...mappedData.rating[sku.product_id],
             ...mappedData.reviewLength[sku.product_id],
@@ -189,7 +191,7 @@ export default function ChildCategory () {
     return (
         <div className={styles.mainContainer}>
             <Head>
-                <title>{getCategoryName(childCategory)}</title>
+                <title>{childCategory && getCategoryName(childCategory)}</title>
             </Head>
             <Navbar />
             
@@ -207,7 +209,7 @@ export default function ChildCategory () {
                     />
                 </div>
                 <div className={styles.productsContainer}>
-                    <h1 className={styles.pageTitle}>{getCategoryName(childCategory)}</h1>
+                    <h1 className={styles.pageTitle}>{childCategory && getCategoryName(childCategory)}</h1>
                     <div className={styles.selectionBar}>
                         <p className={styles.productAmount}>
                             全

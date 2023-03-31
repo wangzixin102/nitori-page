@@ -26,10 +26,15 @@ const emailSchema = yup.object().shape({
 
 const cookie = new Cookies();
 
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function profileEdit () {
     const router = useRouter();
     const token = cookie.get('token')
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const [addedProductsAmount, setAddedProductsAmount] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
     
@@ -52,7 +57,7 @@ export default function profileEdit () {
         }
     }, [userData]);
 
-    const handleOnClickHome = (e) => {
+    const handleOnClickHome = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         router.push("/")
     };
@@ -79,7 +84,7 @@ export default function profileEdit () {
                 });                
                 console.log(response.data);
                 router.reload();
-            } catch (error) {
+            } catch (error: any) {
                 setErrorMessage(error.response.data.error);
             }    
         }

@@ -55,7 +55,7 @@ export default async function RegisterController(req: NextApiRequest, res: NextA
             
             const token = jwt.sign(
                 { username, email }, 
-                process.env.JWT_SECRET, 
+                "qwertyuiopasdfghjklzxcvbnm1234567890", 
                 {expiresIn: '7d'}
             );
             console.log('tokennnn', token);

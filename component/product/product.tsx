@@ -3,7 +3,11 @@ import { Rating } from '@mui/material';
 
 import styles from './product.module.css';
 
-export default function ProductDisplay({ product }) {  
+type DisplayProductProp = {
+    product: any;
+} 
+
+export default function ProductDisplay({ product }: DisplayProductProp) {  
     
     return (
         <div className={styles.productContainer}>

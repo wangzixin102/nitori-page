@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import styles from '../styles/loginRegister.module.css';
 
-const loginSchema = yup.object().shape({
+export const loginSchema = yup.object().shape({
     email: yup
         .string()
         .email('Invalid email address')
@@ -44,16 +44,15 @@ const Login = () => {
             const response = await axios.post('./api/user/login', data);
             const redirectPath = Array.isArray(router.query.redirect) ? router.query.redirect.join('') : router.query.redirect || '/';
             router.push(redirectPath);
-        } catch (error) {
-          if (error.response) {
+        } catch (error: any) {
+            if (error.response) {
                 setServerErrors(error.response.data);
-          } else {
+            } else {
                 setServerErrors({ message: 'An error occurred. Please try again later.' });
-          }
+            }
         }
     };
-      
-
+    
     return (
         <div>
             <div>
@@ -69,7 +68,6 @@ const Login = () => {
                         <input 
                             className={styles.inputText} 
                             type="text" 
-                            name="email" 
                             placeholder="Email"
                             {...register('email', { required: true })} 
                         /><br/>
@@ -81,7 +79,6 @@ const Login = () => {
                         <input 
                             className={styles.inputText}
                             type="password" 
-                            name="password" 
                             placeholder="Password"
                             {...register('password', { required: true })} 
                         /><br/>

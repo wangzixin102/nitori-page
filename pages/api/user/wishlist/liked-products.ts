@@ -51,7 +51,7 @@ export default async function getLikedData(req: NextApiRequest, res: NextApiResp
             return res.status(401).json({ message: 'Unauthorized' });
         }
     
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as DecodedToken;
+        const decodedToken = jwt.verify(token, "qwertyuiopasdfghjklzxcvbnm1234567890") as DecodedToken;
         const useremail = decodedToken.email;
     
         const likedProducts = await prisma.favourite_products.findMany({

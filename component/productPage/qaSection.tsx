@@ -9,10 +9,16 @@ import getUserData from '../../lib/userData';
 import voteIcon from '../../public/icon/advice-vote.svg';
 import styles from './qaSection.module.css';
 
+
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function QA () {
     const router = useRouter();
     const productId = router.query.id;
-    const {userData, isLoggedIn} = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const [QADatas, setQADatas] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);

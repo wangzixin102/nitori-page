@@ -15,10 +15,20 @@ import favouriteProducts from '../../public/icon/favourite-product.svg';
 import cart from '../../public/icon/shopping-cart.svg';
 import styles from './navbar.module.css';
 
+interface Category {
+    [x: string]: any;
+    categoryId: string;
+}
+
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+    
 const Navbar = () => {
     const router = useRouter();
-    const { userData } = getUserData();
-    const [topLevelCategories, setTopLevelCategories] = useState([]);
+    const { userData } = getUserData() as unknown as { userData: UserData };
+    const [topLevelCategories, setTopLevelCategories] = useState<Category[]>([]);
     const [filteredList, setFilteredList] = useState([]);
     const [addedProductsAmount, setAddedProductsAmount] = useState(0);    
     const [selectedCategory, setSelectedCategory] = useState('すべて');
@@ -30,12 +40,12 @@ const Navbar = () => {
 
     useEffect(() => {
         if (categories && categories.length > 0) {
-            const categoriesById = {};
+            const categoriesById: { [key: string]: Category } = {};
             categories.forEach((category: { categoryId: string; }) => {
                 categoriesById[category.categoryId] = category;
             });
 
-            const topLevelCategories = [];
+            const topLevelCategories: ((prevState: never[]) => never[]) | { parentId: string; categoryId: string; }[] = [];
 
             categories.forEach((category: { parentId: string; categoryId: string; }) => {
                 const parentId = category.parentId;

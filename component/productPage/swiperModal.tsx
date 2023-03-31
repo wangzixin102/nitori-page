@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -16,14 +17,19 @@ interface SwiperModalProps {
     imageUrl: string;
 }
 
+interface Image {
+    imgUrl: string;
+}
+
 const SwiperModal: React.FC<SwiperModalProps> = ({ isOpen, onClose, imageUrl }) => {    
     if (!isOpen) return null;
-    const currentImgs = useContext(SlideContext);
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const currentImgs: Image[] = useContext(SlideContext) ?? [];  
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType| null>(null);
 
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
+                
                 <Swiper
                     style={{
                         "--swiper-navigation-color": "#009e96",
@@ -32,11 +38,11 @@ const SwiperModal: React.FC<SwiperModalProps> = ({ isOpen, onClose, imageUrl }) 
                     loop={true}
                     spaceBetween={10}
                     navigation={true}
-                    thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : null}
+                    thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
                     modules={[FreeMode, Navigation, Thumbs]}
                     className={styles.modalSwiper}
                 >
-                    {currentImgs.map((imgUrl, index) => (
+                    {currentImgs && currentImgs.map((imgUrl: { imgUrl: string; }, index: React.Key) => (
                         <SwiperSlide key={index}>
                             <img 
                                 src={imgUrl.imgUrl} 
@@ -57,7 +63,7 @@ const SwiperModal: React.FC<SwiperModalProps> = ({ isOpen, onClose, imageUrl }) 
                     modules={[FreeMode, Navigation, Thumbs]}
                     className={styles.pagination}
                 >
-                    {currentImgs.map((imgUrl, idx) => (
+                    {currentImgs.map((imgUrl: { imgUrl: string; }, idx: React.Key) => (
                         <SwiperSlide key={idx}>
                             <img
                                 src={imgUrl.imgUrl}

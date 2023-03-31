@@ -16,9 +16,32 @@ import styles from "../../styles/wishlist.module.css";
 
 const cookies = new Cookies();
 
+type ProductProp = {
+    id: string;
+}
+
+type Product = {
+    product_id: string; 
+    sku_id: string; 
+    sku_subname: string; 
+    sku_price: string; 
+    sku_imgUrl: string; 
+    selection: string; 
+    order_method: string; 
+};
+  
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
+interface List {
+    list_name: string;
+}
+
 export default function wishlist () {
     const router = useRouter();
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const token = cookies.get('token');
     const [listName, setListName] = useState('');
     const [makeListModal, setMakeListModal] = useState (false);
@@ -28,7 +51,7 @@ export default function wishlist () {
     const [newListName, setNewListName] = useState(mainList);
     const [isChecked, setIsChecked] = useState<Record<number, boolean>>({});
     const [isAllChecked, setIsAllChecked] = useState(false);
-    const [checkedProducts, setCheckedProducts] = useState([]);
+    const [checkedProducts, setCheckedProducts] = useState<ProductProp[]>([]);
     const [showSwitchModal, setShowSwitchModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
@@ -41,19 +64,19 @@ export default function wishlist () {
     if (likeProductsErr || likedListsErr) return <div>An error occured.</div>;
     if (!likedProducts || !likedLists) return <div>Loading ...</div>;
 
-    const filteredLists = likedLists.filter((product: { user_email: string; }) => {
+    const filteredLists: List[] = likedLists.filter((product: { user_email: string; }) => {
         if (userData && userData.email) {
             return product.user_email === userData.email;
         }
         return false;
     });
-
-    const handleListChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+      
+    const handleListChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setMainList(e.target.value);
         setIsChecked({});
         setIsAllChecked(false);
         setCheckedProducts([]);
-    }
+    };
 
     const filteredProducts = likedProducts.filter((product: { user_email: string; list_name: string; }) => {
         if (userData && userData.email) {
@@ -77,17 +100,17 @@ export default function wishlist () {
 
     const handleAllCheckboxChange = (e: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
         setIsAllChecked(e.target.checked);
-        const newIsChecked = {};
-        filteredProducts.forEach((product: unknown, index: string | number) => {
-            newIsChecked[index] = e.target.checked;
+        const newIsChecked: Record<string | number, boolean> = {};
+        filteredProducts.forEach((product: unknown, index: number) => {
+            if (typeof e.target.checked === 'boolean') {
+                newIsChecked[index] = e.target.checked;
+            }
         });
         setIsChecked(newIsChecked);
-        const selectedProducts = filteredProducts.filter((_: unknown, index: string | number) => newIsChecked[index]);
+        const selectedProducts = filteredProducts.filter((_: unknown, index: number) => newIsChecked[index]);
         setCheckedProducts(selectedProducts);        
     };
-
-    console.log('product', filteredProducts);
-
+    
     const handleOptionChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setSelectedOption(event.target.value);
     };
@@ -113,7 +136,7 @@ export default function wishlist () {
             console.log(response.data);
             router.reload();
             setListName('');
-        } catch (error) {
+        } catch (error: any) {
             setErrorMessage(error.response.data.error);
         }
     }
@@ -131,7 +154,7 @@ export default function wishlist () {
             });                
             console.log(response.data);
             router.reload();
-        } catch (error) {
+        } catch (error: any) {
             setErrorMessage(error.response.data.error);
         }
     }
@@ -165,7 +188,7 @@ export default function wishlist () {
             });                
             console.log(response.data);
             router.reload();
-        } catch (error) {
+        } catch (error: any) {
             setErrorMessage(error.response.data.error);
         }
     }
@@ -187,10 +210,7 @@ export default function wishlist () {
         }
     }
 
-    const handleAddProduct = async(product: { 
-        product_id: string; sku_id: string; sku_subname: string; sku_price: string; 
-        sku_imgUrl: string; selection: string; order_method: string; 
-    }) => {
+    const handleAddProduct = async(product: Product) => {
         const { product_id, sku_id, sku_subname, sku_price,
             sku_imgUrl, selection, order_method } = product;
             const quantity = productAmount && productAmount[sku_id] ? productAmount[sku_id] : 1;
@@ -389,8 +409,10 @@ export default function wishlist () {
                                         className={styles.operation}
                                         onClick={() => {
                                             setShowSwitchModal(!showSwitchModal);
-                                            const defaultList = filteredLists.find((list: { list_name: string; }) => list.list_name !== mainList);
-                                            setSelectedOption(defaultList.list_name);
+                                            const defaultList: List | undefined = filteredLists.find((list: { list_name: string; }) => list.list_name !== mainList);
+                                            if (defaultList) {
+                                                setSelectedOption(defaultList.list_name);
+                                            }
                                             setErrorMessage(null);
                                         }}
                                     >
@@ -490,7 +512,7 @@ export default function wishlist () {
                             {filteredProducts && filteredProducts.map((product: { 
                                 sku_imgUrl: string; sku_subname: string; sku_price: string; product_id?: string; 
                                 sku_id?: string; selection?: string; order_method?: string; 
-                            }, index: string | number) => (
+                            }, index: number) => (
                                 <div className={styles.products}>
                                     <div className={styles.imgWrapper}>
                                         <input 
@@ -522,13 +544,17 @@ export default function wishlist () {
                                                 defaultValue="1"
                                             />
                                         </div>
-                                        <button 
+                                        <button  
                                             className={styles.addCartBtn} 
                                             onClick={() => {
                                                 const { product_id, sku_id, sku_subname, sku_price,
                                                     sku_imgUrl, selection, order_method } = product;
-                                                handleAddProduct({ product_id, sku_id, sku_subname, sku_price, 
-                                                    sku_imgUrl, selection, order_method });
+                                                if (product_id && sku_id && selection && order_method) {
+                                                    handleAddProduct({
+                                                        product_id, sku_id, sku_subname, sku_price,
+                                                        sku_imgUrl, selection, order_method,
+                                                    });
+                                                }
                                             }}
                                         >
                                             <Image

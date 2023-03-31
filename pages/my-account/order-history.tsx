@@ -10,27 +10,32 @@ import getUserData from '../../lib/userData';
 
 import styles from "../../styles/orderHistory.module.css";
 
+interface Order {
+    user_email: string;
+    product_id: string;
+    product_subname: string;
+    selection: string; 
+    order_date: Date;
+    imgUrl: string;
+    order_id: string;
+    status: string;
+    guarantee: string;
+    set_up: boolean;
+    pick_up: boolean;
+    amount: number;
+    price: number;
+}
+
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function orderHistory () {
     const router = useRouter();
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const [dateFilter, setDateFilter] = useState('sixMonths');
     const [statusFilter, setStatusFilter] = useState('ALL');
-
-    interface Order {
-        user_email: string;
-        product_id: string;
-        product_subname: string;
-        selection: string; 
-        order_date: Date;
-        imgUrl: string;
-        order_id: string;
-        status: string;
-        guarantee: string;
-        set_up: boolean;
-        pick_up: boolean;
-        amount: number;
-        price: number;
-    }
 
     const fetcher = async (url: string) => await axios.get(url).then((res) => res.data);
     const { data: userOrders, error } = useSWR('/api/user/user-order', fetcher);

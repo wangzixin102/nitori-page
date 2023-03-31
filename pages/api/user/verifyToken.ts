@@ -16,7 +16,7 @@ export default async function verifyToken(req: NextApiRequest, res: NextApiRespo
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as DecodedToken;
+    const decodedToken = jwt.verify(token, "qwertyuiopasdfghjklzxcvbnm1234567890") as DecodedToken;
     const user = { email: decodedToken.email, username: decodedToken.username };
 
     res.status(200).json({ user });

@@ -26,10 +26,12 @@ export default function WritingReview () {
 
     const filteredOrders = userOrders.filter((order: { order_id: string; }) => order.order_id === orderId)[0];
 
-    const handleReviewScoreChange = (event: any, newValue: React.SetStateAction<number>) => {
-        setReviewScore(newValue);
-    }
-
+    const handleReviewScoreChange = (event: React.SyntheticEvent<Element, Event>, value: number | null) => {
+        if (value !== null) {
+            setReviewScore(value);
+        }
+    };
+      
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         try {

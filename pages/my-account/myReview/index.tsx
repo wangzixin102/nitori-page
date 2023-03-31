@@ -18,9 +18,14 @@ interface Order {
     selection: string;
 }
 
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function myReview () {
     const router = useRouter();
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
 
     const fetcher = async (url: string) => await axios.get(url).then((res) => res.data);
     const { data: userOrders, error } = useSWR('/api/user/user-order', fetcher);

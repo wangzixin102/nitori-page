@@ -17,16 +17,21 @@ import addressAlter from '../../public/icon/address-alt.svg';
 import creditCardAlter from '../../public/icon/creditcard-alt.svg';
 import styles from "../../styles/myAccount.module.css";
 
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function Account() {
     const router = useRouter();
-    const {userData} = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
 
     const fetcher = async (url: string) => await axios.get(url).then((res) => res.data);
     const { data: userOrders, error } = useSWR('/api/user/user-order', fetcher);
     if (error) return <div>An error occured.</div>;
     if (!userOrders) return <div>Loading ...</div>;
     
-    const filteredOrders = userOrders.filter((order) => {
+    const filteredOrders = userOrders.filter((order: { user_email: string; }) => {
         if (userData && userData.email) {
             return order.user_email === userData.email;
         }
@@ -61,7 +66,7 @@ export default function Account() {
         router.push('/my-account/profileEdit')
     }
 
-    const handleWriteReview = (orderId) => {
+    const handleWriteReview = (orderId: string) => {
         router.push(`/my-account/myReview/${orderId}`)
     }    
     

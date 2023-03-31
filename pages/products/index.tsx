@@ -13,11 +13,6 @@ export default function Products () {
     const { data: products, error: productsErr } = useSWR('../api/products/products', fetcher);
     if(productsErr) return <div>An error occured.</div>;
     if (!products) return <div>Loading ...</div>;
-    // const { data: sku, error: skuErr } = useSWR('../api/products/sku', fetcher);
-    // const { data: skuImg, error: skuImgErr } = useSWR('../api/products/sku-img', fetcher);
-    // const { data: skuProp, error: skuPropErr } = useSWR('../api/products/sku-prop', fetcher);
-    // if (productsErr || skuErr || skuImgErr || skuPropErr) return <div>An error occured.</div>;
-    // if (!products || !sku || !skuImg || !skuProp) return <div>Loading ...</div>;
   
     return (
         <div>

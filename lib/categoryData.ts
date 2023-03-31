@@ -17,7 +17,7 @@ export const getCategoryData = async (parentCategory: string, childCategory: str
     const skuPropData = skuProp.data.filter((sp: { product_id: string; }) => productIds.includes(sp.product_id));
     const review = reviews.data.filter((rv: { product_id: string; }) => productIds.includes(rv.product_id));
 
-    const findCategory = (categoryId: string, categories: any[]) => {
+    const findCategory = (categoryId: string, categories: any[]): any | null => {
         for (const category of categories) {
           if (category.categoryId === categoryId) {
             return category;

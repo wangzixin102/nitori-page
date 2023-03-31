@@ -14,11 +14,32 @@ import styles from '../styles/cart.module.css';
 
 const cookies = new Cookies();
 
+interface Product {
+    user_email: string;
+    product_id: string;
+    sku_id: string;
+    sku_subname: string;
+    selection: string;
+    price: any;
+    imgUrl: string;
+    order_method: string;
+    point: string;
+    deliver_fee: string;
+    amount: number;
+    status: string;
+    deliver_catrgory: string
+};
+
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function Cart () {
     const router = useRouter();
-    const { userData } = getUserData();
+    const { userData } = getUserData() as unknown as { userData: UserData };
     const token = cookies.get('token');
-    const [currentAmount, setCurrentAmount] = useState(null);
+    const [currentAmount, setCurrentAmount] = useState<number | null>(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -35,22 +56,6 @@ export default function Cart () {
         return product.status === "あとで買う";
     })
     
-    interface Product {
-        user_email: string;
-        product_id: string;
-        sku_id: string;
-        sku_subname: string;
-        selection: string;
-        price: string;
-        imgUrl: string;
-        order_method: string;
-        point: string;
-        deliver_fee: string;
-        amount: number;
-        status: string;
-        deliver_catrgory: string
-    };
-
     const handleProductPage = (productId: string) => {
         router.push(`/products/${productId}`)
     };
@@ -75,6 +80,9 @@ export default function Cart () {
     const handleChangeStatus = async(skuId: string, status: string) => {
         const newStatus = status === 'カート' ? 'あとで買う' : 'カート';
         try {
+            if (!userData) {
+                return;
+            }
             const response = await axios.post('/api/user/cart/change-status', {
                 user_email: userData.email,
                 sku_id: skuId,
@@ -86,11 +94,11 @@ export default function Cart () {
             });
             console.log(response.data);
             router.reload();
-        } catch (error) {
+        } catch (error: any) {
             setErrorMessage(error.response.data.error);
         }
     }
-
+    
     const handleAmountBlur = async(event: React.FocusEvent<HTMLInputElement, Element>, product: any) => {
         const newAmount = parseInt(event.target.value);
         if (isNaN(newAmount)) return;
@@ -105,7 +113,7 @@ export default function Cart () {
             });
             console.log(response.data);
             router.reload();
-        } catch (error) {
+        } catch (error: any) {
             setErrorMessage(error.response.data.error);
         }
     }
@@ -169,7 +177,7 @@ export default function Cart () {
                                     また、商品は「あとで買う」に移動していただくこともできます。
                                 </p>
                             </div>
-                        ) : ( inCartProducts.map((product) => (
+                        ) : ( inCartProducts.map((product: Product) => (
                             <div className={styles.inCartContainer}>
                                 <div className={styles.productImgWrapper}>
                                     <Image
@@ -216,7 +224,7 @@ export default function Cart () {
                                                 className={styles.amountInput}
                                                 type='text'
                                                 value={currentAmount !== null ? currentAmount : product.amount}
-                                                onChange={(e) => setCurrentAmount(e.target.value)}
+                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentAmount(parseInt(e.target.value))}
                                                 onBlur={(event) => handleAmountBlur(event, product)}
                                             />
                                             <button 

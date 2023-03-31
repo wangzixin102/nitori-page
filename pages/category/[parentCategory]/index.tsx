@@ -9,6 +9,11 @@ import Navbar from "../../../component/nav/navbar";
 
 import styles from "../../../styles/parentCate.module.css";
 
+interface TopCategory {
+  [x: string]: any;
+  categoryId: string;
+}
+
 interface Category {
   categoryId: string;
   categoryName: string;
@@ -23,19 +28,19 @@ interface Props {
 export default function ParentCategory() {
   const router = useRouter();
   const { parentCategory } = router.query;
-  const [topLevelCategories, setTopLevelCategories] = useState([]);
+  const [topLevelCategories, setTopLevelCategories] = useState<TopCategory[]>([]);
 
   const fetcher = async (url: string) => await axios.get(url).then((res) => res.data);
   const { data: categories, error: categoriesErr } = useSWR("/api/category", fetcher);
 
   useEffect(() => {
     if (categories && categories.length > 0) {
-      const categoriesById = {};
+      const categoriesById: { [key: string]: TopCategory } = {};
       categories.forEach((category: { categoryId: string; }) => {
         categoriesById[category.categoryId] = category;
-      });
+      }); 
 
-      const topLevelCategories = [];
+      const topLevelCategories: ((prevState: never[]) => never[]) | { parentId: string; categoryId: string; }[] = [];
 
       categories.forEach((category: { parentId: string; categoryId: string; }) => {
         const parentId = category.parentId;

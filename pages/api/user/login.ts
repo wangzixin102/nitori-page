@@ -45,7 +45,7 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
             
             const token = jwt.sign(
                 { email: user.email, username: user.username }, 
-                process.env.JWT_SECRET, 
+                "qwertyuiopasdfghjklzxcvbnm1234567890", 
                 {expiresIn: '7d'}
             );
             
@@ -74,7 +74,7 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
         }
       
         try {
-            const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as DecodedToken;
+            const decodedToken = jwt.verify(token, "qwertyuiopasdfghjklzxcvbnm1234567890") as DecodedToken;
             const user = { email: decodedToken.email, username: decodedToken.username };
             res.status(200).json({ user });
         } catch (error) {

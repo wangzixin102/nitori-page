@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
+import { GetStaticProps, GetStaticPropsContext } from 'next';
 import axios from "axios";
 import Head from 'next/head';
 import Image from 'next/image';
@@ -19,6 +20,19 @@ import addCartIcon from '../../public/icon/add-cart.svg'
 import favouriteProduct from '../../public/icon/favourite-product.svg';
 import styles from '../../styles/product.module.css';
 
+type Props = {
+  product: any;
+  productImg: any;
+  sku: any;
+  skuImg: any;
+  skuProp: any;
+} 
+
+type UserData = {
+  [x: string]: any;
+  email: string;
+};
+
 export async function getStaticPaths() {
   const products = await axios.get("http://localhost:3000/api/products/products");
   if (!Array.isArray(products.data)) {
@@ -30,10 +44,14 @@ export async function getStaticPaths() {
 
   return { paths, fallback: true };
 }
-  
-export async function getStaticProps({ params }) {
-  const productId = params.id;
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }: GetStaticPropsContext) => {
+  if (!params) {
+    return { notFound: true };
+  }
+  const productId = params.id as string;
   const { product, productImg, sku, skuImg, skuProp } = await getProductData(productId);
+
   return {
     props: {
       product: product[0],
@@ -45,7 +63,7 @@ export async function getStaticProps({ params }) {
   }
 };
   
-export default function Product ({product, productImg, sku, skuImg, skuProp}) {
+export default function Product ({product, productImg, sku, skuImg, skuProp}: Props) {
   if (!product || !productImg || !sku || !skuImg || !skuProp) {
     return <div>Loading...</div>
   };  
@@ -54,7 +72,7 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
   const productId= router.query.id;
   const cookies = new Cookies();
   const token = cookies.get('token');
-  const { userData } = getUserData();
+  const { userData } = getUserData() as unknown as { userData: UserData };
   const [hasVoted, setHasVoted] = useState(false);
   const [addAmount, setAddAmount] = useState('1');
   const [addProductModal, setAddProductModal] = useState(false);
@@ -109,7 +127,7 @@ export default function Product ({product, productImg, sku, skuImg, skuProp}) {
   const selectionOptions: SelectionOption[] = getSelectionOptions(selectionProps, skuWithName);
   
   // set default select options
-  const defaultSelectedOptions = {};
+  const defaultSelectedOptions: {[key: string]: any} = {};
   selectionOptions.forEach((prop) => {
     const defaultValue = prop.defaultValue || prop.options[0];
     defaultSelectedOptions[prop.propName] = defaultValue

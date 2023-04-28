@@ -1,0 +1,275 @@
+[
+    {
+        "id": 1,
+        "categoryId": "bed0001",
+        "productId": 2039220,
+        "itemName": "シングルベッドフレーム",
+        "price": "39,900~59,900",
+        "rank": 4.5,
+        "review": 248,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2039220/203922001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20230220092622336"
+    },
+    {
+        "id": 2,
+        "categoryId": "bed0001",
+        "productId": 2025720,
+        "itemName": "シングルチェストベッドフレーム",
+        "price": "86,900",
+        "rank": 4.7,
+        "review": 7,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2025720/202572001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20230203071328116"
+
+    },
+    {
+        "id": 3,
+        "categoryId": "bed0001",
+        "productId": 5651840,
+        "itemName": "シングル棚・コンセント・引出し付収納ベッドフレーム",
+        "price": "23,900",
+        "rank": 4.2,
+        "review": 63,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/5651840/565184001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20190725134450182"
+    },
+    {
+        "id": 4,
+        "categoryId": "bed0002",
+        "productId": 2000843,
+        "itemName": "折りたたみすのこベッド",
+        "price": "17,900",
+        "rank": 4.4,
+        "review": 16,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2000843/200084301.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 5,
+        "categoryId": "bed0002",
+        "productId": 2000854,
+        "itemName": "電動折りたたみベッド",
+        "price": "49,900",
+        "rank": 4.5,
+        "review": 7,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2000854/200085401.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20211122142151700"
+
+    },
+    {
+        "id": 6,
+        "categoryId": "bed0002",
+        "productId": 2020814,
+        "itemName": "リクライニングベッド",
+        "price": "29,900",
+        "rank": 3.3,
+        "review": 3,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2020814/202081401.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20220610182144939"
+
+    },
+    {
+        "id": 7,
+        "categoryId": "bed0003",
+        "productId": 5635180,
+        "itemName": "アンティーク調木目ベッドフレーム",
+        "price": "46,000~60,000",
+        "rank": 4.0,
+        "review": 11,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/5635180/563518001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20200213183147352"
+    },
+    {
+        "id": 8,
+        "categoryId": "bed0003",
+        "productId": 2033010,
+        "itemName": "シングルベッドフレーム",
+        "price": "24,900~49,900",
+        "rank": 5.0,
+        "review": 1,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/2033010/203301001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20221024155143201"
+    },
+    {
+        "id": 9,
+        "categoryId": "bed0003",
+        "productId": 5633160,
+        "itemName": "ベッドフレーム",
+        "price": "32,900~86,900",
+        "rank": 3.8,
+        "review": 5,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/5633160/563316001.jpg?ccp=1676865600&imwidth=415&imdensity=1&ts=20210705182146697"
+    },
+    {
+        "id": 10,
+        "categoryId": "sofa0001",
+        "productId": 1149151,
+        "itemName": "3人用布張りソファ",
+        "price": "41,900~46,900",
+        "rank": 4.5,
+        "review": 45,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1149151/114915101.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 11,
+        "categoryId": "sofa0001",
+        "productId": 1146699,
+        "itemName": "3人用布張りソファ",
+        "price": "66,900~76,900",
+        "rank": 4.4,
+        "review": 45,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1146699/114669901.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 12,
+        "categoryId": "sofa0001",
+        "productId": 1135410,
+        "itemName": "3人用布張りソファ",
+        "price": "109,000",
+        "rank": 4.7,
+        "review": 9,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1135410/113541001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 13,
+        "categoryId": "sofa0002",
+        "productId": 1141196,
+        "itemName": "2人用本革ソファ",
+        "price": "74,900~84,900",
+        "rank": 4.0,
+        "review": 4,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1141196/114119601.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 14,
+        "categoryId": "sofa0002",
+        "productId": 1138019,
+        "itemName": "1人用本革ソファ",
+        "price": "56,900",
+        "rank": 4.0,
+        "review": 2,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1138019/113801901.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 15,
+        "categoryId": "sofa0002",
+        "productId": 1142060,
+        "itemName": "3人用両電動本革リクライニングソファ",
+        "price": "169,000~219,000",
+        "rank": 3.8,
+        "review": 17,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1142060/114206001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20221228103812438"
+    },
+    {
+        "id": 16,
+        "categoryId": "sofa0003",
+        "productId": 1150029,
+        "itemName": "ひっかきに強く毛玉が出にくい 布張りソファ",
+        "price": "76,900",
+        "rank": 4.3,
+        "review": 14,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1150029/115002901.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 17,
+        "categoryId": "sofa0003",
+        "productId": 1101290,
+        "itemName": "布張りカウチソファ",
+        "price": "129,000",
+        "rank": 4.6,
+        "review": 40,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1101290/110129001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20221228103812438"
+    },
+    {
+        "id": 18,
+        "categoryId": "sofa0003",
+        "productId": 1148100,
+        "itemName": "布張りカウチソファ",
+        "price": "119,000",
+        "rank": 4.3,
+        "review": 16,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/1148100/114810001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20220701122231096"
+    },
+    {
+        "id": 19,
+        "categoryId": "desk0001-1",
+        "productId": 6200337,
+        "itemName": "デスク",
+        "price": "10,900",
+        "rank": 4.5,
+        "review": 63,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6200337/620033701.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 20,
+        "categoryId": "desk0001-1",
+        "productId": 5651253,
+        "itemName": "タモ材を使用した丈夫なデスク",
+        "price": "27,900~40,400",
+        "rank": 4.3,
+        "review": 15,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/5651253/565125301.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 21,
+        "categoryId": "desk0001-2",
+        "productId": 6201430,
+        "itemName": "デスクセット",
+        "price": "21,900",
+        "rank": 4.2,
+        "review": 45,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6201430/620143001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20221230072226313"
+    },
+    {
+        "id": 22,
+        "categoryId": "desk0001-2",
+        "productId": 3551160,
+        "itemName": "両袖机",
+        "price": "82,390~86,790",
+        "rank": 4.5,
+        "review": 63,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/3551160/355116001.jpg?ccp=1676869200&imwidth=415&imdensity=1&ts=20201228154155315"
+    },
+    {
+        "id": 23,
+        "categoryId": "desk0002-1",
+        "productId": 6548450,
+        "itemName": "くみあわせデスク",
+        "price": "64,900~72,900",
+        "rank": 0,
+        "review": 0,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6548450/654845001.jpg?ccp=1676872800&imwidth=415&imdensity=1&ts=20230110183637162"
+    },
+    {
+        "id": 24,
+        "categoryId": "desk0002-1",
+        "productId": 6551260,
+        "itemName": "ユニットデスク",
+        "price": "74,900~82,900",
+        "rank": 0,
+        "review": 0,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6551260/655126001.jpg?ccp=1676872800&imwidth=415&imdensity=1&ts=20221228173041922"
+    },
+    {
+        "id": 25,
+        "categoryId": "desk0002-2",
+        "productId": 6540048,
+        "itemName": "コンパクトデスク",
+        "price": "24,900~32,900",
+        "rank": 4.8,
+        "review": 5,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6540048/654004801.jpg?ccp=1676872800&imwidth=415&imdensity=1&ts=20221215125152263"
+    },
+    {
+        "id": 26,
+        "categoryId": "desk0002-3",
+        "productId": 5651770,
+        "itemName": "コンパクトツインデスク ラック付き",
+        "price": "21,400",
+        "rank": 4.5,
+        "review": 12,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/5651770/565177001.jpg?ccp=1676872800&imwidth=415&imdensity=1&ts=20230203071328116"
+    },
+    {
+        "id": 27,
+        "categoryId": "desk0002-3",
+        "productId": 6545350,
+        "itemName": "スタンダードデスク",
+        "price": "39,900~48,900",
+        "rank": 5.0,
+        "review": 1,
+        "imgUrl": "https://www.nitori-net.jp/ecstatic/image/product/6545350/654535001.jpg?ccp=1676872800&imwidth=415&imdensity=1&ts=20221230192133373"
+    }
+]

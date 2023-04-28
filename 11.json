@@ -1,0 +1,98 @@
+[
+    {   
+        "id": 1,
+        "categoryName": "ベッド",
+        "categoryId": "bed000",
+        "parentId": ""
+    },
+    {
+        "id": 2,
+        "categoryName": "収納付きベッド",
+        "categoryId": "bed0001",
+        "parentId": "bed000"
+    },
+    {
+        "id": 3,
+        "categoryName": "折りたたみベッド",
+        "categoryId": "bed0002",
+        "parentId": "bed000"
+    },
+    {
+        "id": 4,
+        "categoryName": "スタンダードベッド",
+        "categoryId": "bed0003",
+        "parentId": "bed000"
+    },
+    {
+        "id": 5,
+        "categoryName": "ソファ",
+        "categoryId": "sofa000",
+        "parentId": ""
+    },
+    {
+        "id": 6,
+        "categoryName": "ファブリックソファ",
+        "categoryId": "sofa0001",
+        "parentId": "sofa000"
+    },
+    {
+        "id": 7,
+        "categoryName": "レザーソファ",
+        "categoryId": "sofa0002",
+        "parentId": "sofa000"
+    },
+    {
+        "id": 8,
+        "categoryName": "カウチソファ",
+        "categoryId": "sofa0003",
+        "parentId": "sofa000"
+    },
+    {
+        "id": 9,
+        "categoryName": "テーブル・机",
+        "categoryId": "desk000",
+        "parentId": ""
+    },
+    {
+        "id": 10,
+        "categoryName": "パソコンデスク・PCデスク",
+        "categoryId": "desk0001",
+        "parentId": "desk000"
+    },
+    {
+        "id": 11,
+        "categoryName": "学習机・機能デスク",
+        "categoryId": "desk0002",
+        "parentId": "desk000"
+    },
+    {
+        "id": 12,
+        "categoryName": "ワークデスク",
+        "categoryId": "desk0001-1",
+        "parentId": "desk0001"
+    },
+    {
+        "id": 13,
+        "categoryName": "袖机",
+        "categoryId": "desk0001-2",
+        "parentId": "desk0001"
+    },
+    {
+        "id": 14,
+        "categoryName": "くみあわせですく",
+        "categoryId": "desk0002-1",
+        "parentId": "desk0002"
+    },
+    {
+        "id": 15,
+        "categoryName": "天然木天板デスク",
+        "categoryId": "desk0002-2",
+        "parentId": "desk0002"
+    },
+    {
+        "id": 16,
+        "categoryName": "木目調天板デスク",
+        "categoryId": "desk0002-3",
+        "parentId": "desk0002"
+    }
+]

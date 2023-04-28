@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import styles from '../styles/loginRegister.module.css';
 
-export const loginSchema = yup.object().shape({
+const loginSchema = yup.object().shape({
     email: yup
         .string()
         .email('Invalid email address')
@@ -45,14 +45,15 @@ const Login = () => {
             const redirectPath = Array.isArray(router.query.redirect) ? router.query.redirect.join('') : router.query.redirect || '/';
             router.push(redirectPath);
         } catch (error: any) {
-            if (error.response) {
+          if (error.response) {
                 setServerErrors(error.response.data);
-            } else {
+          } else {
                 setServerErrors({ message: 'An error occurred. Please try again later.' });
-            }
+          }
         }
     };
-    
+      
+
     return (
         <div>
             <div>
@@ -73,19 +74,15 @@ const Login = () => {
                         /><br/>
                         {errors?.email && <span className={styles.errorMsg}>{errors.email.message as ReactNode}</span>}
                     </div>
-
                     <div className={styles.inputInfo}>
                         <label className={styles.inputTitle} htmlFor="password">Password: </label>
-                        <input 
-                            className={styles.inputText}
-                            type="password" 
-                            placeholder="Password"
-                            {...register('password', { required: true })} 
-                        /><br/>
+                        <input className={styles.inputText} type="password" placeholder="Password" {...register('password', { required: true })} /><br/>
                         {errors?.password && <span className={styles.errorMsg}>{errors.password.message as ReactNode}</span>}
                     </div>
-
                     {serverErrors.message && <div className={styles.errorMsg}>{serverErrors.message}</div>}
+
+
+
 
                     <button className={styles.submitBtn} type="submit" disabled={formState.isSubmitting}>
                         {formState.isSubmitting ? 'Submitting...' : 'Login'}

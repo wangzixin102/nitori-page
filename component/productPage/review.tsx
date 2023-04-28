@@ -16,9 +16,14 @@ interface CountData {
     _count: number;
 }
 
+type UserData = {
+    [x: string]: any;
+    email: string;
+};
+
 export default function Review() {
     const router = useRouter();
-    const { userData, isLoggedIn } = getUserData();   
+    const { userData, isLoggedIn } = getUserData() as unknown as { userData: UserData };
     const [orderBy, setOrderBy] = useState();
     const [reviews, setReviews] = useState([]);
     const [totalReviewCounts, setTotalReviewCounts] = useState();
